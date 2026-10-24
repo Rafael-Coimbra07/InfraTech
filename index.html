@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="escuro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfraTech | Engenharia elétrica, TI, redes, CFTV e cloud</title>
+  <meta name="description" content="A InfraTech projeta e executa elétrica, redes, hardware, segurança eletrônica e cloud com a mesma equipe, a mesma documentação e o mesmo padrão técnico.">
+  <meta name="theme-color" content="#0D1014">
+  <link rel="icon" type="image/png" href="./assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+  <!-- Aplica o tema salvo antes da pintura para evitar piscar -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("infratech-tema");
+        if (t === "claro" || t === "escuro") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ===================== CABEÇALHO ===================== -->
+  <header class="nav" id="topo">
+    <div class="wrap nav__inner">
+      <a class="brand" href="#inicio" aria-label="InfraTech, voltar ao início">
+        <img class="logo logo--dark" src="./assets/logo-dark.png" alt="InfraTech" width="2174" height="606">
+        <img class="logo logo--light" src="./assets/logo-light.png" alt="InfraTech" width="2174" height="606">
+      </a>
+
+      <nav class="nav__menu" id="menu" aria-label="Navegação principal">
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#solucoes">Soluções</a></li>
+          <li><a href="#metodologia">Metodologia</a></li>
+          <li><a href="#parceiros">Parceiros</a></li>
+          <li><a href="#equipe">Equipe</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Ativar modo claro">
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <a class="btn btn--primary nav__cta" href="#contato">Fale conosco</a>
+        <button class="icon-btn nav__burger" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="wrap hero__grid">
+        <div class="hero__text">
+          <p class="hero__kicker">Engenharia elétrica, infraestrutura de TI, redes, CFTV e cloud</p>
+          <h1 id="hero-title">Da tomada à nuvem, um só projeto.</h1>
+          <p class="hero__lead">Como num quadro de distribuição, cada área da InfraTech é um circuito ligado ao mesmo barramento: uma equipe, uma documentação e um padrão técnico do começo ao fim.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#solucoes">Ver soluções</a>
+            <a class="btn btn--ghost" href="#equipe">Conhecer a equipe</a>
+          </div>
+          <ul class="hero__norms" aria-label="Normas e padrões que seguimos">
+            <li><code>NBR 5410</code> Instalações de baixa tensão</li>
+            <li><code>NBR 14136</code> Plugues e tomadas</li>
+            <li><code>EIA/TIA-568</code> Cabeamento estruturado</li>
+          </ul>
+        </div>
+
+        <!-- Quadro interativo: os 5 circuitos -->
+        <div class="qd" aria-label="Quadro InfraTech: escolha uma área para ver o resumo">
+          <div class="qd__head">
+            <span>Quadro InfraTech</span>
+            <span class="qd__status"><i aria-hidden="true"></i>5 circuitos ativos</span>
+          </div>
+          <div class="qd__body">
+            <div class="qd__bus" role="tablist" aria-label="Áreas de atuação">
+              <button class="circ" role="tab" id="tab-c1" aria-controls="qd-detail" aria-selected="true" data-target="c1"><code>C1</code><span>Elétrica</span></button>
+              <button class="circ" role="tab" id="tab-c2" aria-controls="qd-detail" aria-selected="false" tabindex="-1" data-target="c2"><code>C2</code><span>TI e hardware</span></button>
+              <button class="circ" role="tab" id="tab-c3" aria-controls="qd-detail" aria-selected="false" tabindex="-1" data-target="c3"><code>C3</code><span>Redes</span></button>
+              <button class="circ" role="tab" id="tab-c4" aria-controls="qd-detail" aria-selected="false" tabindex="-1" data-target="c4"><code>C4</code><span>CFTV</span></button>
+              <button class="circ" role="tab" id="tab-c5" aria-controls="qd-detail" aria-selected="false" tabindex="-1" data-target="c5"><code>C5</code><span>Cloud e IA</span></button>
+            </div>
+            <div class="qd__detail" id="qd-detail" role="tabpanel" aria-live="polite" aria-labelledby="tab-c1">
+              <!-- preenchido pelo js/main.js a partir da seção Soluções -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SOBRE ===================== -->
+    <section class="section" id="sobre" aria-labelledby="sobre-title">
+      <div class="wrap about">
+        <div class="about__intro">
+          <h2 id="sobre-title">Uma empresa, todas as camadas da infraestrutura.</h2>
+          <p>Quem monta um escritório, um laboratório ou uma sala de operação costuma contratar um fornecedor para a elétrica, outro para a rede, outro para os computadores e mais um para as câmeras. O resultado é cabo desorganizado, documentação espalhada e ninguém responsável pelo conjunto.</p>
+          <p>A InfraTech resolve isso unindo consultoria técnica e execução na mesma equipe. Planejamos, especificamos, instalamos e documentamos cada camada, da tomada na parede até a nuvem.</p>
+        </div>
+        <ul class="about__list">
+          <li>
+            <h3>Conformidade e segurança</h3>
+            <p>Dimensionamento conforme as normas brasileiras, com proteção DR e DPS e verificação com instrumentos digitais.</p>
+          </li>
+          <li>
+            <h3>Projeto de ponta a ponta</h3>
+            <p>Elétrica, hardware, rede, CFTV e cloud saem de um único projeto, sem conflito entre fornecedores.</p>
+          </li>
+          <li>
+            <h3>Gestão organizada</h3>
+            <p>Cada área tem um gerente responsável, a documentação fica centralizada e todos participam da execução.</p>
+          </li>
+          <li>
+            <h3>Inovação com IA</h3>
+            <p>Uma gerência dedicada pesquisa ferramentas de inteligência artificial para os nossos processos e para treinar clientes.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== SOLUÇÕES ===================== -->
+    <section class="section section--alt" id="solucoes" aria-labelledby="solucoes-title">
+      <div class="wrap">
+        <header class="section__head">
+          <h2 id="solucoes-title">Cinco circuitos, um padrão técnico.</h2>
+          <p>Em cada área atuamos em duas frentes: a consultoria, que diagnostica e planeja, e a execução, que instala, testa e entrega.</p>
+        </header>
+
+        <div class="circuits">
+          <article class="circuit" id="c1" data-code="C1" data-short="Elétrica">
+            <div class="circuit__id">
+              <code>C1</code>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <div class="circuit__title">
+              <h3>Engenharia elétrica e automação</h3>
+              <p class="circuit__focus">Segurança, conformidade com a NBR 5410 e eficiência energética em instalações comerciais e industriais.</p>
+            </div>
+            <div class="circuit__col" data-part="consult">
+              <h4>Consultoria</h4>
+              <p>Dimensionamento de cargas, especificação de quadros com DR e DPS, adequação às normas de segurança e auditoria de instalações.</p>
+            </div>
+            <div class="circuit__col" data-part="exec">
+              <h4>Execução</h4>
+              <p>Verificação com multímetro digital, ensaios em ambientes operacionais e propostas de controle e automação.</p>
+            </div>
+          </article>
+
+          <article class="circuit" id="c2" data-code="C2" data-short="TI e hardware">
+            <div class="circuit__id">
+              <code>C2</code>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="circuit__title">
+              <h3>Infraestrutura de TI, hardware e licenciamento</h3>
+              <p class="circuit__focus">O ciclo de vida completo dos equipamentos e sistemas da empresa.</p>
+            </div>
+            <div class="circuit__col" data-part="consult">
+              <h4>Consultoria</h4>
+              <p>Dimensionamento do parque tecnológico e orçamentos de acordo com a demanda real da operação.</p>
+            </div>
+            <div class="circuit__col" data-part="exec">
+              <h4>Execução</h4>
+              <p>Montagem, manutenção, testes e inventário de hardware; aquisição de sistemas operacionais e aplicativos e configuração segura de ambientes em rede.</p>
+            </div>
+          </article>
+
+          <article class="circuit" id="c3" data-code="C3" data-short="Redes">
+            <div class="circuit__id">
+              <code>C3</code>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3M12 12V8"/></svg>
+            </div>
+            <div class="circuit__title">
+              <h3>Redes de dados e cabeamento estruturado</h3>
+              <p class="circuit__focus">Conectividade organizada, segura e pronta para crescer.</p>
+            </div>
+            <div class="circuit__col" data-part="consult">
+              <h4>Consultoria</h4>
+              <p>Visita técnica, levantamento de requisitos físicos e lógicos e layout integrado com a elétrica e a segurança.</p>
+            </div>
+            <div class="circuit__col" data-part="exec">
+              <h4>Execução</h4>
+              <p>Lista de materiais, projeto lógico da rede e orçamento transparente de periféricos, ativos de rede e serviços.</p>
+            </div>
+          </article>
+
+          <article class="circuit" id="c4" data-code="C4" data-short="CFTV">
+            <div class="circuit__id">
+              <code>C4</code>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.75 12h3.63a1 1 0 0 1 .9 1.45l-2.04 4.07a1 1 0 0 1-1.7.13l-2.13-2.97"/><path d="M17.1 9.05a1 1 0 0 1 .45 1.34l-3.1 6.21a1 1 0 0 1-1.35.45L3.6 12.3a2.92 2.92 0 0 1-1.3-3.91L3.7 5.6a2.92 2.92 0 0 1 3.9-1.3z"/><path d="M2 19h3.76a2 2 0 0 0 1.8-1.1L9 15M2 21v-4M7 9h.01"/></svg>
+            </div>
+            <div class="circuit__title">
+              <h3>Segurança eletrônica e CFTV</h3>
+              <p class="circuit__focus">Proteção patrimonial e monitoramento contínuo do ambiente.</p>
+            </div>
+            <div class="circuit__col" data-part="consult">
+              <h4>Consultoria</h4>
+              <p>Vistoria local, análise de riscos, mapeamento de pontos críticos e definição dos requisitos de segurança.</p>
+            </div>
+            <div class="circuit__col" data-part="exec">
+              <h4>Execução</h4>
+              <p>Layout de cobertura, escolha de câmeras e centrais de gravação, fornecimento dos equipamentos e implantação.</p>
+            </div>
+          </article>
+
+          <article class="circuit" id="c5" data-code="C5" data-short="Cloud e IA">
+            <div class="circuit__id">
+              <code>C5</code>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            </div>
+            <div class="circuit__title">
+              <h3>Cloud computing e inteligência artificial</h3>
+              <p class="circuit__focus">Menos custo operacional, mais disponibilidade e processos mais inteligentes.</p>
+            </div>
+            <div class="circuit__col" data-part="consult">
+              <h4>Consultoria</h4>
+              <p>Análise das demandas e comparação das melhores soluções de nuvem do mercado, com proposta refinada com IA.</p>
+            </div>
+            <div class="circuit__col" data-part="exec">
+              <h4>Execução</h4>
+              <p>Migração para a nuvem sem parar a operação e implantação de ferramentas de IA para processos e treinamento de usuários.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== METODOLOGIA ===================== -->
+    <section class="section" id="metodologia" aria-labelledby="metodologia-title">
+      <div class="wrap">
+        <header class="section__head">
+          <h2 id="metodologia-title">Três etapas, nenhuma surpresa.</h2>
+          <p>Todo projeto passa pelas mesmas etapas, na mesma ordem, com gerências específicas responsáveis por cada uma.</p>
+        </header>
+
+        <ol class="trace">
+          <li class="node">
+            <span class="node__dot" aria-hidden="true"></span>
+            <span class="node__step">Etapa 01</span>
+            <h3>Visita técnica e mapeamento</h3>
+            <p>Vamos ao local, medimos o ambiente e levantamos as necessidades e restrições físicas, elétricas e lógicas.</p>
+            <p class="node__who">Gerência de projeto e gerência de comunicação</p>
+          </li>
+          <li class="node">
+            <span class="node__dot" aria-hidden="true"></span>
+            <span class="node__step">Etapa 02</span>
+            <h3>Engenharia e especificação</h3>
+            <p>Entregamos o layout inicial e final, o projeto lógico, a lista de materiais e uma proposta detalhada.</p>
+            <p class="node__who">Gerências de materiais, administrativa e de TI</p>
+          </li>
+          <li class="node">
+            <span class="node__dot" aria-hidden="true"></span>
+            <span class="node__step">Etapa 03</span>
+            <h3>Execução e comissionamento</h3>
+            <p>Instalamos, testamos, documentamos a entrega e seguimos com suporte e treinamento.</p>
+            <p class="node__who">Toda a equipe, com apoio da gerência de IA</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== PARCEIROS ===================== -->
+    <section class="section section--alt" id="parceiros" aria-labelledby="parceiros-title">
+      <div class="wrap">
+        <header class="section__head">
+          <h2 id="parceiros-title">Tecnologias com que trabalhamos.</h2>
+          <p>Especificamos marcas e padrões consolidados no mercado em cada camada do projeto.</p>
+        </header>
+        <ul class="partners">
+          <li><strong>Dell Technologies</strong><span>Estações de trabalho e monitores</span></li>
+          <li><strong>Microsoft</strong><span>Windows, Visio e Azure</span></li>
+          <li><strong>Intel</strong><span>Processadores e plataformas</span></li>
+          <li><strong>Furukawa</strong><span>Cabeamento estruturado</span></li>
+          <li><strong>Intelbras</strong><span>CFTV e equipamentos de rede</span></li>
+          <li><strong>WEG e Schneider</strong><span>Proteção elétrica</span></li>
+          <li><strong>AWS</strong><span>Computação em nuvem</span></li>
+          <li><strong>Google Cloud</strong><span>Nuvem e inteligência artificial</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== EQUIPE ===================== -->
+    <section class="section" id="equipe" aria-labelledby="equipe-title">
+      <div class="wrap">
+        <header class="section__head">
+          <h2 id="equipe-title">Quem faz a InfraTech.</h2>
+          <p>Nove integrantes organizados em liderança, cinco gerências e operação, ligados como o próprio projeto.</p>
+        </header>
+        <!-- Os cards são gerados pelo js/main.js a partir do array teamMembers -->
+        <div class="org" id="org" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTATO ===================== -->
+    <section class="section section--alt" id="contato" aria-labelledby="contato-title">
+      <div class="wrap">
+        <header class="section__head">
+          <h2 id="contato-title">Fale com a gente.</h2>
+          <p>Canais oficiais mantidos pelas gerências administrativa e de comunicação.</p>
+        </header>
+        <div class="contact">
+          <div class="panel channels" id="channels">
+            <!-- gerado pelo js/main.js a partir do objeto companyLinks -->
+          </div>
+
+          <form class="panel form" id="contactForm" novalidate>
+            <div class="form__row">
+              <label for="f-nome">Nome</label>
+              <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+            </div>
+            <div class="form__row">
+              <label for="f-email">E-mail</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="form__row">
+              <label for="f-area">Assunto</label>
+              <select id="f-area" name="area">
+                <option>Elétrica</option>
+                <option>TI e hardware</option>
+                <option>Redes</option>
+                <option>CFTV</option>
+                <option>Cloud e IA</option>
+                <option>Outro assunto</option>
+              </select>
+            </div>
+            <div class="form__row">
+              <label for="f-msg">Mensagem</label>
+              <textarea id="f-msg" name="mensagem" rows="4" required></textarea>
+            </div>
+            <button class="btn btn--primary" type="submit">Enviar mensagem</button>
+            <p class="form__msg" id="formMsg" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <div class="footer__brand">
+        <img class="logo logo--dark" src="./assets/logo-dark.png" alt="InfraTech" width="2174" height="606" loading="lazy">
+        <img class="logo logo--light" src="./assets/logo-light.png" alt="InfraTech" width="2174" height="606" loading="lazy">
+        <p>Engenharia elétrica, infraestrutura de TI, redes, segurança eletrônica e cloud em um só projeto.</p>
+      </div>
+      <nav class="footer__links" aria-label="Links do rodapé">
+        <h3>Navegação</h3>
+        <a href="#sobre">Sobre</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#metodologia">Metodologia</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="footer__team">
+        <h3>Equipe</h3>
+        <p id="footerTeam"></p>
+      </div>
+    </div>
+    <div class="wrap footer__bottom">
+      <span>© 2026 InfraTech Soluções em Engenharia e TI</span>
+      <span>Projeto acadêmico COTEMIG</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
