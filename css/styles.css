@@ -1,0 +1,1368 @@
+/* ==========================================================================
+   InfraTech — Design System & Estilos Oficiais (Diagrama Unifilar)
+   Suporte nativo a Modo Escuro (padrão) e Modo Claro
+   ========================================================================== */
+
+:root {
+  /* Cores de Acento e Semânticas Oficiais */
+  --color-accent-cyan: #22C3D6;
+  --color-accent-hover: #00E5FF;
+  --color-success: #10893E;
+  --color-danger: #E5484D;
+
+  /* Tipografia */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Métricas e Layout */
+  --container-max: 1280px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --header-height: 76px;
+}
+
+/* Tema Padrão: Modo Escuro */
+:root,
+[data-theme="escuro"] {
+  --color-bg: #0D1014;
+  --color-bg-alt: #11151B;
+  --color-surface: #161A20;
+  --color-surface-alt: #1C1F23;
+  --color-text-primary: #F5F6F7;
+  --color-text-muted: #9BA3AE;
+  --color-border: #262C36;
+  --color-border-strong: #343C4A;
+  --color-grid: rgba(34, 195, 214, 0.045);
+  --color-cyan-tint: rgba(34, 195, 214, 0.11);
+  --color-cyan-border: rgba(34, 195, 214, 0.42);
+  --nav-bg: rgba(13, 16, 20, 0.85);
+}
+
+/* Tema Alternativo: Modo Claro */
+[data-theme="claro"] {
+  --color-bg: #F5F6F7;
+  --color-bg-alt: #ECEEF1;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F0F2F5;
+  --color-text-primary: #1C1F23;
+  --color-text-muted: #5C6470;
+  --color-border: #DDE1E6;
+  --color-border-strong: #C6CCD4;
+  --color-grid: rgba(28, 31, 35, 0.045);
+  --color-cyan-tint: rgba(34, 195, 214, 0.10);
+  --color-cyan-border: rgba(34, 195, 214, 0.55);
+  --nav-bg: rgba(245, 246, 247, 0.88);
+}
+
+/* ==========================================================================
+   Reset & Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 16px);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+code {
+  font-family: var(--font-mono);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-hover);
+  outline-offset: 3px;
+}
+
+/* Link de pular para o conteúdo (Acessibilidade) */
+.skip {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--color-accent-cyan);
+  color: #0D1014;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+}
+
+.skip:focus {
+  top: 12px;
+}
+
+.wrap {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Alternância automática da Logomarca conforme o Tema */
+.logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo--light {
+  display: none;
+}
+
+[data-theme="claro"] .logo--dark {
+  display: none;
+}
+
+[data-theme="claro"] .logo--light {
+  display: block;
+}
+
+/* ==========================================================================
+   Botões & Controles
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background-color: var(--color-accent-cyan);
+  color: #0D1014;
+}
+
+.btn--primary:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.btn--ghost {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-strong);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-accent-cyan);
+  color: var(--color-accent-cyan);
+}
+
+.icon-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.icon-btn:hover {
+  border-color: var(--color-accent-cyan);
+  color: var(--color-accent-cyan);
+}
+
+.icon-btn svg {
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+  stroke-width: 1.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* Ícone Sol / Lua no botão de tema */
+.i-moon {
+  display: none;
+}
+
+[data-theme="claro"] .i-sun {
+  display: none;
+}
+
+[data-theme="claro"] .i-moon {
+  display: block;
+}
+
+/* ==========================================================================
+   1. Header / Barra de Navegação
+   ========================================================================== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: var(--header-height);
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 0;
+  flex-shrink: 0;
+}
+
+.nav__menu ul {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav__menu a {
+  font-size: 0.94rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.nav__menu a:hover,
+.nav__menu a[aria-current="true"] {
+  color: var(--color-text-primary);
+  border-bottom-color: var(--color-accent-cyan);
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav__burger {
+  display: none;
+}
+
+/* ==========================================================================
+   2. Hero Section & Quadro Unifilar Interativo
+   ========================================================================== */
+.hero {
+  padding: 72px 0 88px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1.15fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.hero__kicker {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--color-accent-cyan);
+  margin-bottom: 16px;
+  letter-spacing: 0.01em;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 4.6vw, 4.1rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  max-width: 15ch;
+}
+
+.hero__lead {
+  margin-top: 20px;
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  color: var(--color-text-muted);
+  max-width: 50ch;
+}
+
+.hero__actions {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero__norms {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.hero__norms li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero__norms code {
+  padding: 3px 8px;
+  border-radius: 4px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-accent-cyan);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Quadro InfraTech (Diagrama Unifilar no Hero) */
+.qd {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.qd__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 18px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.qd__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-primary);
+}
+
+.qd__status i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-success);
+  box-shadow: 0 0 0 3px rgba(16, 137, 62, 0.22);
+}
+
+.qd__body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Barramento principal (linha vertical ciano com derivações) */
+.qd__bus {
+  position: relative;
+  padding-left: 22px;
+  border-left: 3px solid var(--color-accent-cyan);
+  display: grid;
+  gap: 10px;
+}
+
+.qd__bus::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: -8px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: var(--color-accent-cyan);
+}
+
+.circ {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-alt);
+  text-align: left;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.circ::before {
+  content: "";
+  position: absolute;
+  left: -23px;
+  top: 50%;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-border-strong);
+  transition: background-color 0.2s ease;
+}
+
+.circ code {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.circ span {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.circ:hover {
+  border-color: var(--color-accent-cyan);
+}
+
+.circ[aria-selected="true"] {
+  background-color: var(--color-cyan-tint);
+  border-color: var(--color-accent-cyan);
+}
+
+.circ[aria-selected="true"]::before {
+  background-color: var(--color-accent-cyan);
+}
+
+.circ[aria-selected="true"] code {
+  color: var(--color-accent-cyan);
+}
+
+.qd__detail {
+  background-color: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+.qd__detail h3 {
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.qd__focus {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.qd__detail h4 {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-accent-cyan);
+  margin: 12px 0 4px;
+  font-weight: 600;
+}
+
+.qd__detail p {
+  font-size: 0.91rem;
+  color: var(--color-text-muted);
+}
+
+.qd__more {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--color-accent-cyan);
+  border-bottom: 1px solid transparent;
+}
+
+.qd__more:hover {
+  color: var(--color-accent-hover);
+  border-bottom-color: var(--color-accent-hover);
+}
+
+/* ==========================================================================
+   Seções Gerais
+   ========================================================================== */
+.section {
+  padding: 88px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section--alt {
+  background-color: var(--color-bg-alt);
+}
+
+.section__head {
+  margin-bottom: 48px;
+  max-width: 64ch;
+}
+
+.section__head h2 {
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.section__head p {
+  color: var(--color-text-muted);
+  font-size: 1.04rem;
+}
+
+/* ==========================================================================
+   3. Sobre a InfraTech
+   ========================================================================== */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.about__intro h2 {
+  font-size: clamp(1.85rem, 3.2vw, 2.65rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.about__intro p {
+  color: var(--color-text-muted);
+  font-size: 1.02rem;
+}
+
+.about__intro p + p {
+  margin-top: 14px;
+}
+
+.about__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.about__list li {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  border-top: 2px solid var(--color-accent-cyan);
+}
+
+.about__list h3 {
+  font-size: 1.06rem;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+
+.about__list p {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   4. Portfólio de Soluções (Os 5 Circuitos)
+   ========================================================================== */
+.circuits {
+  position: relative;
+  padding-left: 28px;
+  border-left: 3px solid var(--color-accent-cyan);
+  display: grid;
+  gap: 16px;
+}
+
+.circuit {
+  position: relative;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 76px 1.15fr 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+/* Derivação horizontal ligando o card ao barramento */
+.circuit::before {
+  content: "";
+  position: absolute;
+  left: -29px;
+  top: 42px;
+  width: 28px;
+  height: 2px;
+  background-color: var(--color-accent-cyan);
+}
+
+.circuit::after {
+  content: "";
+  position: absolute;
+  left: -34px;
+  top: 38px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-accent-cyan);
+}
+
+.circuit:hover,
+.circuit.is-flash {
+  border-color: var(--color-accent-cyan);
+}
+
+.circuit__id {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 10px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  color: var(--color-accent-cyan);
+}
+
+.circuit__id code {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.circuit__id svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.circuit__title h3 {
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.circuit__focus {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+.circuit__col {
+  padding-left: 20px;
+  border-left: 1px solid var(--color-border);
+}
+
+.circuit__col h4 {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-accent-cyan);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.circuit__col p {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   5. Metodologia (Trilha de 3 Etapas)
+   ========================================================================== */
+.trace {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+}
+
+.trace::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background-color: var(--color-accent-cyan);
+  z-index: 0;
+}
+
+.node {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  margin-top: 38px;
+}
+
+.node__dot {
+  position: absolute;
+  top: -38px;
+  left: 24px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-bg);
+  border: 2px solid var(--color-accent-cyan);
+}
+
+.node__dot::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  background-color: var(--color-accent-cyan);
+}
+
+.node__step {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--color-accent-cyan);
+  font-weight: 600;
+}
+
+.node h3 {
+  font-size: 1.22rem;
+  letter-spacing: -0.02em;
+  margin: 8px 0 10px;
+}
+
+.node p {
+  font-size: 0.93rem;
+  color: var(--color-text-muted);
+}
+
+.node__who {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 0.78rem !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* ==========================================================================
+   6. Parceiros Tecnológicos
+   ========================================================================== */
+.partners {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.partners li {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.2s ease;
+}
+
+.partners li:hover {
+  border-color: var(--color-accent-cyan);
+}
+
+.partners strong {
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+}
+
+.partners span {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   7. Equipe (Organograma de 9 Integrantes)
+   ========================================================================== */
+.org {
+  display: grid;
+  gap: 0;
+}
+
+.tier {
+  position: relative;
+  padding-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Linha vertical do organograma conectando Liderança -> Gerências -> Operação */
+.tier::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 36px;
+  background-color: var(--color-accent-cyan);
+}
+
+.tier:first-child {
+  padding-top: 0;
+}
+
+.tier:first-child::before {
+  display: none;
+}
+
+.tier__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.tier__label span {
+  color: var(--color-accent-cyan);
+}
+
+.tier__row {
+  width: 100%;
+  display: grid;
+  gap: 16px;
+}
+
+.tier--lideranca .tier__row {
+  grid-template-columns: repeat(2, minmax(0, 440px));
+  justify-content: center;
+}
+
+.tier--gerencia .tier__row {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.tier--operacao .tier__row {
+  grid-template-columns: repeat(2, minmax(0, 380px));
+  justify-content: center;
+}
+
+.member {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.member:hover {
+  border-color: var(--color-accent-cyan);
+}
+
+.member--lideranca {
+  border-color: var(--color-cyan-border);
+  background-color: var(--color-surface-alt);
+}
+
+.member__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--color-cyan-tint);
+  border: 1px solid var(--color-cyan-border);
+  color: var(--color-accent-cyan);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.member h3 {
+  font-size: 1.05rem;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.member__role {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--color-accent-cyan);
+  margin-top: 2px;
+}
+
+.member__desc {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  flex-grow: 1;
+}
+
+.member__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.chip {
+  font-size: 0.76rem;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text-muted);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.chip:hover {
+  border-color: var(--color-accent-cyan);
+  color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   8. Contato & Canais Institucionais
+   ========================================================================== */
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.panel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+}
+
+.channels h3 {
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+
+.channel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  color: var(--color-text-primary);
+  transition: color 0.2s ease;
+}
+
+.channel:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.channel span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.channel strong {
+  font-size: 0.96rem;
+  font-weight: 600;
+}
+
+.channel small {
+  font-size: 0.83rem;
+  color: var(--color-text-muted);
+}
+
+.channel svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-accent-cyan);
+  stroke-width: 1.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  flex-shrink: 0;
+}
+
+.channel:hover {
+  color: var(--color-accent-cyan);
+}
+
+/* Formulário Institucional */
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.form__row {
+  display: grid;
+  gap: 6px;
+}
+
+.form__row label {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.form__row input,
+.form__row select,
+.form__row textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  transition: border-color 0.2s ease;
+}
+
+.form__row input:focus,
+.form__row select:focus,
+.form__row textarea:focus {
+  border-color: var(--color-accent-cyan);
+  outline: none;
+}
+
+.form__row [aria-invalid="true"] {
+  border-color: var(--color-danger);
+}
+
+.form__msg {
+  font-size: 0.9rem;
+  min-height: 1.4em;
+}
+
+.form__msg.is-ok {
+  color: var(--color-success);
+  font-weight: 500;
+}
+
+.form__msg.is-error {
+  color: var(--color-danger);
+}
+
+/* ==========================================================================
+   9. Rodapé (Footer) & Toast
+   ========================================================================== */
+.footer {
+  background-color: var(--color-surface);
+  padding: 56px 0 32px;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 1.2fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.footer__brand p {
+  margin-top: 14px;
+  max-width: 38ch;
+}
+
+.footer h3 {
+  font-size: 0.88rem;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer__links a:hover {
+  color: var(--color-accent-cyan);
+}
+
+.footer__bottom {
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.84rem;
+}
+
+/* Toast de aviso para links em configuração */
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 60;
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-alt);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-accent-cyan);
+  font-size: 0.88rem;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Responsividade (Tablet & Mobile)
+   ========================================================================== */
+@media (max-width: 1120px) {
+  .tier--gerencia .tier__row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .circuit {
+    grid-template-columns: 68px 1fr 1fr;
+  }
+
+  .circuit__title {
+    grid-column: 2 / -1;
+  }
+
+  .circuit__col:first-of-type {
+    grid-column: 2 / 3;
+  }
+}
+
+@media (max-width: 920px) {
+  .nav__burger {
+    display: inline-flex;
+  }
+
+  .nav__cta {
+    display: none;
+  }
+
+  .nav__menu {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: 16px 24px 24px;
+    display: none;
+  }
+
+  .nav__menu.is-open {
+    display: block;
+  }
+
+  .nav__menu ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .hero__grid,
+  .about,
+  .contact,
+  .footer__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .qd__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .trace {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .trace::before {
+    display: none;
+  }
+
+  .node {
+    margin-top: 0;
+  }
+
+  .node__dot {
+    position: static;
+    margin-bottom: 14px;
+  }
+
+  .partners {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tier--lideranca .tier__row,
+  .tier--gerencia .tier__row,
+  .tier--operacao .tier__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 48px 0 64px;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .qd {
+    padding: 20px;
+  }
+
+  .about__list,
+  .partners,
+  .tier--lideranca .tier__row,
+  .tier--gerencia .tier__row,
+  .tier--operacao .tier__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .circuits {
+    padding-left: 18px;
+  }
+
+  .circuit {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .circuit::before {
+    left: -19px;
+    width: 18px;
+  }
+
+  .circuit::after {
+    left: -24px;
+  }
+
+  .circuit__id {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: fit-content;
+  }
+
+  .circuit__title,
+  .circuit__col:first-of-type {
+    grid-column: auto;
+  }
+
+  .circuit__col {
+    padding-left: 0;
+    padding-top: 12px;
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
