@@ -1,0 +1,12 @@
+# Ignorar skills locais e protótipo descartável
+.agents/
+.taste-skill/
+prototipo/
+
+# Ignorar artefatos da bancada/inventário (outra etapa do trabalho) e logo quadriculada
+projeto-bancada/
+bancada*.png
+bancada*.vsdx
+inventario-materiais-e-ferramentas.png
+inventario-materiais-e-ferramentas.txt
+logo-sem-fundo.jpg
