@@ -1263,9 +1263,15 @@ code {
   stroke: var(--color-cyan-border) !important;
 }
 
+.loc-map__avenue {
+  stroke: var(--color-border-strong);
+  stroke-width: 3.5;
+  fill: none;
+}
+
 .loc-map__road {
   stroke: var(--color-border-strong);
-  stroke-width: 2;
+  stroke-width: 1.5;
   fill: none;
 }
 
