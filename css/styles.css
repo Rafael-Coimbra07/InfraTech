@@ -1273,6 +1273,9 @@ code {
   .trace {
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
+    padding-left: 24px;
+    border-left: 2px solid var(--color-accent-cyan);
+    margin-left: 10px;
   }
 
   .trace::before {
@@ -1284,8 +1287,15 @@ code {
   }
 
   .node__dot {
-    position: static;
-    margin-bottom: 14px;
+    position: absolute;
+    top: 26px;
+    left: -37px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .node__dot::after {
+    inset: 5px;
   }
 
   .partners {
