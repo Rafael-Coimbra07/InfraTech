@@ -346,28 +346,95 @@
 
   <!-- ===================== RODAPÉ ===================== -->
   <footer class="footer">
-    <div class="wrap footer__grid">
-      <div class="footer__brand">
-        <img class="logo logo--dark" src="./assets/logo-dark.png" alt="InfraTech" width="2174" height="606" loading="lazy">
-        <img class="logo logo--light" src="./assets/logo-light.png" alt="InfraTech" width="2174" height="606" loading="lazy">
-        <p>Engenharia elétrica, infraestrutura de TI, redes, segurança eletrônica e cloud em um só projeto.</p>
+    <div class="wrap">
+      <!-- Módulo de Localização: Base Operacional COTEMIG Barroca -->
+      <div class="loc-card" aria-label="Localização da base operacional COTEMIG Barroca">
+        <div class="loc-card__info">
+          <div class="loc-card__meta">
+            <span class="loc-card__badge"><i aria-hidden="true"></i>Base operacional</span>
+            <code>19°56'13"S · 43°57'59"W</code>
+          </div>
+          <h3>COTEMIG — Unidade Barroca</h3>
+          <address class="loc-card__addr">
+            Rua Santa Cruz, 546 — Bairro Barroca<br>
+            Belo Horizonte — Minas Gerais · CEP <code>30431-228</code>
+          </address>
+          <div class="loc-card__actions">
+            <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&query=Col%C3%A9gio+COTEMIG+Barroca+Rua+Santa+Cruz+546+Belo+Horizonte+MG" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              Abrir no Google Maps
+            </a>
+            <button class="btn btn--ghost" id="copyAddressBtn" type="button" data-address="Rua Santa Cruz, 546 - Barroca, Belo Horizonte - MG, 30431-228">
+              Copiar endereço
+            </button>
+          </div>
+        </div>
+
+        <a class="loc-map" href="https://www.google.com/maps/search/?api=1&query=Col%C3%A9gio+COTEMIG+Barroca+Rua+Santa+Cruz+546+Belo+Horizonte+MG" target="_blank" rel="noopener noreferrer" aria-label="Ver Rua Santa Cruz, 546, Barroca, Belo Horizonte no Google Maps">
+          <svg class="loc-map__svg" viewBox="0 0 520 220" role="img" aria-hidden="true">
+            <!-- Grade técnica de fundo -->
+            <g class="loc-map__grid">
+              <path d="M0 44h520M0 88h520M0 132h520M0 176h520"/>
+              <path d="M65 0v220M130 0v220M195 0v220M260 0v220M325 0v220M390 0v220M455 0v220"/>
+            </g>
+            <!-- Quadras estilizadas do bairro Barroca -->
+            <g class="loc-map__blocks">
+              <rect x="24" y="20" width="145" height="62" rx="6"/>
+              <rect x="205" y="20" width="155" height="62" rx="6"/>
+              <rect x="392" y="20" width="104" height="62" rx="6"/>
+              <rect x="24" y="114" width="145" height="84" rx="6"/>
+              <rect x="205" y="114" width="155" height="84" rx="6" class="loc-map__block-active"/>
+              <rect x="392" y="114" width="104" height="84" rx="6"/>
+            </g>
+            <!-- Traçado viário principal (Av. Amazonas + Rua Santa Cruz) -->
+            <path class="loc-map__road" d="M0 98h520M187 0v220M376 0v220"/>
+            <path class="loc-map__route" d="M0 98h272v46"/>
+            <!-- Rótulos das vias -->
+            <text x="32" y="92" class="loc-map__street">AV. AMAZONAS</text>
+            <text x="384" y="92" class="loc-map__street">BARROCA · BH/MG</text>
+            <text x="194" y="18" class="loc-map__street" transform="rotate(90 194 18)">RUA SANTA CRUZ</text>
+            <!-- Pino da Unidade COTEMIG Barroca (Nº 546) -->
+            <g transform="translate(272, 144)">
+              <circle class="loc-map__pulse" r="24"/>
+              <circle class="loc-map__pin-outer" r="10"/>
+              <circle class="loc-map__pin-inner" r="4"/>
+            </g>
+            <!-- Etiqueta do Pino -->
+            <g transform="translate(290, 128)">
+              <rect width="148" height="32" rx="6" class="loc-map__tag"/>
+              <text x="12" y="20" class="loc-map__tag-text">COTEMIG · Nº 546</text>
+            </g>
+          </svg>
+          <span class="loc-map__hint">
+            <span>Ver rota no Google Maps</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </span>
+        </a>
       </div>
-      <nav class="footer__links" aria-label="Links do rodapé">
-        <h3>Navegação</h3>
-        <a href="#sobre">Sobre</a>
-        <a href="#solucoes">Soluções</a>
-        <a href="#metodologia">Metodologia</a>
-        <a href="#equipe">Equipe</a>
-        <a href="#contato">Contato</a>
-      </nav>
-      <div class="footer__team">
-        <h3>Equipe</h3>
-        <p id="footerTeam"></p>
+
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img class="logo logo--dark" src="./assets/logo-dark.png" alt="InfraTech" width="2174" height="606" loading="lazy">
+          <img class="logo logo--light" src="./assets/logo-light.png" alt="InfraTech" width="2174" height="606" loading="lazy">
+          <p>Engenharia elétrica, infraestrutura de TI, redes, segurança eletrônica e cloud em um só projeto.</p>
+        </div>
+        <nav class="footer__links" aria-label="Links do rodapé">
+          <h3>Navegação</h3>
+          <a href="#sobre">Sobre</a>
+          <a href="#solucoes">Soluções</a>
+          <a href="#metodologia">Metodologia</a>
+          <a href="#equipe">Equipe</a>
+          <a href="#contato">Contato</a>
+        </nav>
+        <div class="footer__team">
+          <h3>Equipe</h3>
+          <p id="footerTeam"></p>
+        </div>
       </div>
     </div>
     <div class="wrap footer__bottom">
       <span>© 2026 InfraTech Soluções em Engenharia e TI</span>
-      <span>Projeto acadêmico COTEMIG</span>
+      <span>COTEMIG Barroca · Belo Horizonte, MG</span>
     </div>
   </footer>
 

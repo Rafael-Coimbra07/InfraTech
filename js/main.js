@@ -309,6 +309,19 @@ function initPendingLinks() {
     const el = e.target.closest("[data-pending]");
     if (el) showToast(`${el.dataset.pending}: link ainda não configurado.`);
   });
+
+  const copyBtn = $("#copyAddressBtn");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", async () => {
+      const addr = copyBtn.dataset.address;
+      try {
+        await navigator.clipboard.writeText(addr);
+        showToast("Endereço do COTEMIG Barroca copiado!");
+      } catch (err) {
+        showToast(addr);
+      }
+    });
+  }
 }
 
 /* ---------- Formulário ---------- */

@@ -1136,13 +1136,209 @@ code {
 }
 
 /* ==========================================================================
-   9. Rodapé (Footer) & Toast
+   9. Rodapé (Footer), Mapa Técnico COTEMIG Barroca & Toast
    ========================================================================== */
 .footer {
   background-color: var(--color-surface);
   padding: 56px 0 32px;
   color: var(--color-text-muted);
   font-size: 0.9rem;
+}
+
+/* Card de Localização (COTEMIG Barroca) */
+.loc-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin-bottom: 44px;
+  display: grid;
+  grid-template-columns: 1.05fr 1.15fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.loc-card__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.loc-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.loc-card__badge i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-accent-cyan);
+  box-shadow: 0 0 0 3px var(--color-cyan-tint);
+}
+
+.loc-card__info h3 {
+  font-size: 1.35rem;
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.loc-card__addr {
+  font-style: normal;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.loc-card__addr code {
+  color: var(--color-accent-cyan);
+  font-size: 0.85rem;
+}
+
+.loc-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.loc-card__actions .btn svg {
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* Mapa esquemático estilo Blueprint do Barroca */
+.loc-map {
+  position: relative;
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.loc-map:hover {
+  border-color: var(--color-accent-cyan);
+}
+
+.loc-map__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.loc-map__grid path {
+  stroke: var(--color-border);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+  opacity: 0.55;
+}
+
+.loc-map__blocks rect {
+  fill: var(--color-surface-alt);
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.loc-map__block-active {
+  fill: var(--color-cyan-tint) !important;
+  stroke: var(--color-cyan-border) !important;
+}
+
+.loc-map__road {
+  stroke: var(--color-border-strong);
+  stroke-width: 2;
+  fill: none;
+}
+
+.loc-map__route {
+  stroke: var(--color-accent-cyan);
+  stroke-width: 2.5;
+  stroke-dasharray: 6 4;
+  fill: none;
+}
+
+.loc-map__street {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: var(--color-text-muted);
+  letter-spacing: 0.08em;
+}
+
+.loc-map__pulse {
+  fill: rgba(34, 195, 214, 0.18);
+}
+
+.loc-map__pin-outer {
+  fill: var(--color-bg);
+  stroke: var(--color-accent-cyan);
+  stroke-width: 2.5;
+}
+
+.loc-map__pin-inner {
+  fill: var(--color-accent-cyan);
+}
+
+.loc-map__tag {
+  fill: var(--color-bg);
+  stroke: var(--color-accent-cyan);
+  stroke-width: 1.2;
+}
+
+.loc-map__tag-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  fill: var(--color-text-primary);
+}
+
+.loc-map__hint {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.loc-map:hover .loc-map__hint {
+  border-color: var(--color-accent-cyan);
+  color: var(--color-accent-cyan);
+}
+
+.loc-map__hint svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
 }
 
 .footer__grid {
@@ -1262,6 +1458,7 @@ code {
   .hero__grid,
   .about,
   .contact,
+  .loc-card,
   .footer__grid {
     grid-template-columns: minmax(0, 1fr);
   }
